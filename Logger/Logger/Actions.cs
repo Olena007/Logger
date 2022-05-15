@@ -9,37 +9,35 @@ namespace Logger
 {
     internal class Actions
     {
+        private string _line = string.Empty;
         public Result StartMethod()
         {
-            string line = string.Empty;
             Result result = new Result(true);
             var logger = Logger.GetInstance("Info");
-            line = $"{DateTime.Now:H:mm:ss} {logger} {Environment.NewLine}";
-            File.AppendAllText("log.txt", line);
-            Console.WriteLine(line);
+            _line = $"{DateTime.Now:H:mm:ss} {logger} {Environment.NewLine}";
+            File.AppendAllText("log.txt", _line);
+            Console.WriteLine(_line);
             return result;
         }
 
         public Result SkippedLogicInMethod()
         {
-            string line = string.Empty;
             Result result = new Result(true);
             var logger = Logger.GetInstance("Warning");
-            line = $"{DateTime.Now:H:mm:ss} {logger} {Environment.NewLine}";
-            File.AppendAllText("log.txt", line);
-            Console.WriteLine(line);
+            _line = $"{DateTime.Now:H:mm:ss} {logger} {Environment.NewLine}";
+            File.AppendAllText("log.txt", _line);
+            Console.WriteLine(_line);
             return result;
         }
 
         public Result ErrorMethod()
         {
-            string line = string.Empty;
             Result error = new Result(false);
             Logger log = new Logger();
             var logger = Logger.GetInstance("Error");
-            line = $"{DateTime.Now:H:mm:ss} {logger} {log.Message} {log.MessageError} {Environment.NewLine}";
-            File.AppendAllText("log.txt", line);
-            Console.WriteLine(line);
+            _line = $"{DateTime.Now:H:mm:ss} {logger} {log.Message} {log.MessageError} {Environment.NewLine}";
+            File.AppendAllText("log.txt", _line);
+            Console.WriteLine(_line);
             return error;
         }
     }
